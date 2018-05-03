@@ -21,8 +21,8 @@ export default class ExerciseSelectionScreen extends Component {
             <View style={styles.container}>
                 <FlatList
                     data={[
-                        { path: require('./assets/arnold_curl.gif'), name: 'Arnold Curl', key: '0' },
-                        { path: require('./assets/dumbell_military_press.gif'), name: 'Military Press', key: '1' },
+                        { path: require('../assets/arnold_curl.gif'), name: 'Arnold Curl', key: '0' },
+                        { path: require('../assets/dumbell_military_press.gif'), name: 'Military Press', key: '1' },
                     ]}
                     renderItem={({ item }) =>
                         <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-evenly' }}>
