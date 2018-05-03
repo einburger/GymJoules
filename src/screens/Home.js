@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { AppRegistry, Button, View, Text } from 'react-native';
 
-export default class Home extends Component {
+export default class HomeScreen extends Component {
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -12,4 +12,4 @@ export default class Home extends Component {
 }
 
 // skip this line if using Create React Native App
-AppRegistry.registerComponent('JoulesGym', () => Home);
+AppRegistry.registerComponent('JoulesGym', () => HomeScreen);
