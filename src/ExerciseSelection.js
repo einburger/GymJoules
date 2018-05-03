@@ -26,10 +26,10 @@ export default class ExerciseSelectionScreen extends Component {
                 renderItem = { ({item})=> 
                     <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly'}}>
                         <TouchableOpacity onPress={this.onPress}>
-                        <View style={{flex: 1, flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly'}}>
-                                <Image source={item.path} /> 
-                                <Text fontSize='30'> {item.name} </Text>
-                        </View>
+                            <View style={{flex: 1, flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly'}}>
+                                    <Image source={item.path} /> 
+                                    <Text fontSize='30'> {item.name} </Text>
+                            </View>
                         </TouchableOpacity>
                     </View>
                 }
