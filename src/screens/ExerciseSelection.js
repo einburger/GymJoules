@@ -12,10 +12,50 @@ import {
 } from 'react-native';
 
 export default class ExerciseSelectionScreen extends Component {
+
+    state = {
+        text: '',
+        all_data: [
+            { path: require('../assets/arnold_curl.gif'), name: 'Arnold Curl', key: '0' },
+            { path: require('../assets/dumbell_military_press.gif'), name: 'Military Press', key: '1' },
+            { path: require('../assets/skullcrushers.gif'), name: 'Skull Crushers', key: '2' },
+            { path: require('../assets/bench_press.gif'), name: 'Bench Press', key: '3' },
+        ],
+        data: [
+            { path: require('../assets/arnold_curl.gif'), name: 'Arnold Curl', key: '0' },
+            { path: require('../assets/dumbell_military_press.gif'), name: 'Military Press', key: '1' },
+            { path: require('../assets/skullcrushers.gif'), name: 'Skull Crushers', key: '2' },
+            { path: require('../assets/bench_press.gif'), name: 'Bench Press', key: '3' },
+        ]
+    };
+
     onPress = () => {
         this.props.navigation.navigate('Record')
     }
+
+    scanData = () => {
+        var workouts = this.state.data;
+        var new_data = [];
+        for (var i = 0; i < workouts.length; i++) {
+            if (workouts[i].name.includes(this.state.text))
+            {
+                new_data.push(workouts[i]);
+            }
+        }
+        return new_data;
+    }
+
     onSearch = () => {
+        var new_data = this.scanData(); 
+        if (this.state.text != '' && new_data.length > 0) {
+            this.setState(previousState => {
+                return { data: new_data }
+            });
+        } else {
+            this.setState(previousState => {
+                return { data: this.state.all_data }
+            });
+        }
     }
 
     render() {
@@ -24,15 +64,12 @@ export default class ExerciseSelectionScreen extends Component {
                 <TextInput 
                     style={styles.searchBar}
                     placeholder='Search For Exercise'
-                    onChangeText={this.onSearch}
+                    onChangeText={ (text) => this.setState({text}, () => { this.onSearch() }) }
+                    //onSubmitEditing={ this.onSearch() }
+                    value={this.state.text}
                 />
                 <FlatList
-                    data={[
-                        { path: require('../assets/arnold_curl.gif'), name: 'Arnold Curl', key: '0' },
-                        { path: require('../assets/dumbell_military_press.gif'), name: 'Military Press', key: '1' },
-                        { path: require('../assets/skullcrushers.gif'), name: 'Skull Crushers', key: '2' },
-                        { path: require('../assets/bench_press.gif'), name: 'Bench Press', key: '3' },
-                    ]}
+                    data={this.state.data}
                     renderItem={({ item }) =>
                         <View style={styles.buttonContainer}>
                             <TouchableOpacity onPress={this.onPress}>
@@ -75,6 +112,13 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFFFFF',
     }
 });
+
+// const Header = (props) => (
+//     <View style={styles.container}>
+
+//     </View>
+
+// };
 
 // skip this line if using Create React Native App
 AppRegistry.registerComponent('JoulesGym', () => ExerciseSelectionScreen);
