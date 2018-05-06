@@ -17,3 +17,4 @@ TODO
 - [ ] enable transfer of user input to other screens that rely on them
 - [ ] implement some type of database to store previous selections
 - [ ] create a calendar to view previous days
+- [ ] create backend for energy calculations
