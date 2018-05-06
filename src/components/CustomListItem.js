@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-    TouchableOpacity,
-    Image,
-    View,
-    Text
-} from 'react-native';
-
-import styles from '../screens/ExerciseSelection'
+import { TouchableOpacity, Image, View, Text } from 'react-native';
 
 const customlistitem = (props) => {
     return (
