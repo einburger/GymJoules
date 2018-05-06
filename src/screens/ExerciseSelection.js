@@ -33,20 +33,20 @@ export default class ExerciseSelectionScreen extends Component {
         this.props.navigation.navigate('Record')
     }
 
-    scanData = () => {
-        var workouts = this.state.data;
-        var new_data = [];
-        for (var i = 0; i < workouts.length; i++) {
-            if (workouts[i].name.includes(this.state.text))
-            {
-                new_data.push(workouts[i]);
-            }
-        }
-        return new_data;
-    }
-
     onSearch = () => {
-        var new_data = this.scanData(); 
+        scanData = () => {
+            var workouts = this.state.data;
+            var new_data = [];
+            for (var i = 0; i < workouts.length; i++) {
+                if (workouts[i].name.includes(this.state.text))
+                {
+                    new_data.push(workouts[i]);
+                }
+            }
+            return new_data;
+        }
+
+        var new_data = scanData(); 
         if (this.state.text != '' && new_data.length > 0) {
             this.setState(previousState => {
                 return { data: new_data }
