@@ -1,13 +1,16 @@
-JoulesGym is a fitness app using React Native with three purposes:
-- calculate expended energy of a certain exercise by using biological data and specifically tailored formulas (optional)
-- keep a journal of workouts done each day
-- track strength progress and calculate other statistical information
+<h1><center>JoulesGym</center></h1>
+<h4><i><center>in React Native</center></i></h4>
 
-Some other ideas (WIP):
-- create weekly workout plans
+##### JoulesGym is a fitness app using with three purposes:
+1. calculate expended energy of a certain exercise by using biological data and specifically tailored formulas (optional)
+2. keep a journal of workouts done each day
+3. track strength progress and calculate other statistical information
+
+##### Some other ideas (WIP):
+1. create weekly workout plans
 
 ------------------------------------------------------------------------------------------------------------------------
-TODO
+##### TODO:
 - [x] create home screen
 - [x] create exercise selection screen
 - [x] enable screen navigation
