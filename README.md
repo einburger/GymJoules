@@ -15,3 +15,5 @@ TODO
 - [ ] create dialog box that allows user to input number of sets and reps of selected exercise
 - [ ] create biological data input option (an optional thing)
 - [ ] enable transfer of user input to other screens that rely on them
+- [ ] implement some type of database to store previous selections
+- [ ] create a calendar to view previous days
