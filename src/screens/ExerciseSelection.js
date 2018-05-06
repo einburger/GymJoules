@@ -26,6 +26,9 @@ export default class ExerciseSelectionScreen extends Component {
             { path: require('../assets/dumbell_military_press.gif'), name: 'Military Press', key: '1' },
             { path: require('../assets/skullcrushers.gif'), name: 'Skull Crushers', key: '2' },
             { path: require('../assets/bench_press.gif'), name: 'Bench Press', key: '3' },
+        ],
+        null_data: [
+            { path: '', name: "No Results Found.", key: '-1'}
         ]
     };
 
@@ -35,10 +38,12 @@ export default class ExerciseSelectionScreen extends Component {
 
     onSearch = () => {
         scanData = () => {
-            var workouts = this.state.data;
+            var workouts = this.state.all_data;
             var new_data = [];
+            var text = this.state.text.toLowerCase();
             for (var i = 0; i < workouts.length; i++) {
-                if (workouts[i].name.includes(this.state.text))
+                var name = workouts[i].name.toLowerCase();
+                if (name.indexOf(text) !== -1)
                 {
                     new_data.push(workouts[i]);
                 }
@@ -47,7 +52,12 @@ export default class ExerciseSelectionScreen extends Component {
         }
 
         var new_data = scanData(); 
-        if (this.state.text != '' && new_data.length > 0) {
+        if (new_data.length == 0) {
+            this.setState(previousState => {
+                return { data: this.state.null_data }
+            });
+        }
+        else if (this.state.text != '') {
             this.setState(previousState => {
                 return { data: new_data }
             });
@@ -61,13 +71,24 @@ export default class ExerciseSelectionScreen extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <TextInput 
-                    style={styles.searchBar}
-                    placeholder='Search For Exercise'
-                    onChangeText={ (text) => this.setState({text}, () => { this.onSearch() }) }
-                    //onSubmitEditing={ this.onSearch() }
-                    value={this.state.text}
-                />
+                <View style={styles.searchBarStyle}>
+                    <Image style={styles.searchIcon} source={require('../assets/search.png')}/>
+                    <TextInput 
+                        style={styles.searchBar}
+                        placeholder='Search For Exercise'
+                        onChangeText={ 
+                            (text) => this.setState({text}, () => { this.onSearch() }) 
+                        }
+                        spellCheck={true}
+                        underlineColorAndroid='transparent'
+                        clearTextOnFocus={true}
+                        clearButtonMode='while-editing'
+                        inlineImageLeft='search_icon'
+                        returnKeyType='search'
+                        selectTextOnFocus={true}
+                        value={this.state.text}
+                    />
+                    </View>
                 <FlatList
                     data={this.state.data}
                     renderItem={({ item }) =>
@@ -106,19 +127,26 @@ const styles = StyleSheet.create({
         justifyContent: 'space-evenly',
     },
     searchBar: {
+        flex: 1,
         textAlign: 'center',
         height: 40,
-        borderColor: '#74999e',
-        backgroundColor: '#FFFFFF',
+    },
+    searchBarStyle: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#f7f7f7',
+        borderRadius: 5,
+        margin: 10
+    },
+    searchIcon: { 
+        padding: 10,
+        height: 25,
+        width: 25,
+        resizeMode: 'stretch',
+        alignItems: 'center'
     }
 });
-
-// const Header = (props) => (
-//     <View style={styles.container}>
-
-//     </View>
-
-// };
 
 // skip this line if using Create React Native App
 AppRegistry.registerComponent('JoulesGym', () => ExerciseSelectionScreen);
