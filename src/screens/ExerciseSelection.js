@@ -28,7 +28,7 @@ export default class ExerciseSelectionScreen extends Component {
             { path: require('../assets/bench_press.gif'), name: 'Bench Press', key: '3' },
         ],
         null_data: [
-            { path: '', name: "No Results Found.", key: '-1'}
+            { path: '', name: "No Results Found.", key: '-1' }
         ]
     };
 
@@ -43,15 +43,14 @@ export default class ExerciseSelectionScreen extends Component {
             var text = this.state.text.toLowerCase();
             for (var i = 0; i < workouts.length; i++) {
                 var name = workouts[i].name.toLowerCase();
-                if (name.indexOf(text) !== -1)
-                {
+                if (name.indexOf(text) !== -1) {
                     new_data.push(workouts[i]);
                 }
             }
             return new_data;
         }
 
-        var new_data = scanData(); 
+        var new_data = scanData();
         if (new_data.length == 0) {
             this.setState(previousState => {
                 return { data: this.state.null_data }
@@ -72,12 +71,12 @@ export default class ExerciseSelectionScreen extends Component {
         return (
             <View style={styles.container}>
                 <View style={styles.searchBarStyle}>
-                    <Image style={styles.searchIcon} source={require('../assets/search.png')}/>
-                    <TextInput 
+                    <Image style={styles.searchIcon} source={require('../assets/search.png')} />
+                    <TextInput
                         style={styles.searchBar}
                         placeholder='Search For Exercise'
-                        onChangeText={ 
-                            (text) => this.setState({text}, () => { this.onSearch() }) 
+                        onChangeText={
+                            (text) => this.setState({ text }, () => { this.onSearch() })
                         }
                         spellCheck={true}
                         underlineColorAndroid='transparent'
@@ -88,7 +87,7 @@ export default class ExerciseSelectionScreen extends Component {
                         selectTextOnFocus={true}
                         value={this.state.text}
                     />
-                    </View>
+                </View>
                 <FlatList
                     data={this.state.data}
                     renderItem={({ item }) =>
@@ -139,7 +138,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         margin: 10
     },
-    searchIcon: { 
+    searchIcon: {
         padding: 10,
         height: 25,
         width: 25,
