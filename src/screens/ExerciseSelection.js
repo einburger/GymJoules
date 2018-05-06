@@ -98,6 +98,8 @@ export default class ExerciseSelectionScreen extends Component {
                             onPress={this.onPress} 
                             img_path={item.path} 
                             item_name={item.name}
+                            gif_style={styles.gif}
+                            font_style={styles.exercise_label_text}
                         />
                     }
                 />
@@ -144,6 +146,11 @@ const styles = StyleSheet.create({
         width: 25,
         resizeMode: 'stretch',
         alignItems: 'center'
+    },
+    exercise_label_text: {
+        fontSize: 50,
+        fontFamily: 'Roboto',
+        letterSpacing: 3
     }
 });
 
