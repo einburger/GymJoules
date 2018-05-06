@@ -1,5 +1,4 @@
 <h1><p align="center">JoulesGym</p></h1>
-<h4><i><center>in React Native</center></i></h4>
 
 ##### JoulesGym is a fitness app using with three purposes:
 1. calculate expended energy of a certain exercise by using biological data and specifically tailored formulas (optional)
