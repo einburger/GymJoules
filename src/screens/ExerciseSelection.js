@@ -75,9 +75,7 @@ export default class ExerciseSelectionScreen extends Component {
                     <TextInput
                         style={styles.searchBar}
                         placeholder='Search For Exercise'
-                        onChangeText={
-                            (text) => this.setState({text}, () => { this.onSearch(text) })
-                        }
+                        onChangeText={ (text) => this.onSearch(text) }
                         spellCheck={true}
                         underlineColorAndroid='transparent'
                         clearTextOnFocus={true}
