@@ -13,6 +13,7 @@ import {
 
 export default class ExerciseSelectionScreen extends Component {
 
+    // the mutable state
     state = {
         text: '',
         all_data: [
