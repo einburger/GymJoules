@@ -11,6 +11,7 @@ import {
     FlatList
 } from 'react-native';
 
+import styles from '../styles/styles'
 import CustomListItem from '../components/CustomListItem';
 
 export default class ExerciseSelectionScreen extends Component {
@@ -30,7 +31,7 @@ export default class ExerciseSelectionScreen extends Component {
             { path: require('../assets/bench_press.gif'), name: 'Bench Press', key: '3' },
         ],
         null_data: [
-            { path: require('../assets/no_results.gif'), name: "", key: '-1' }
+            { path: require('../assets/no_results.gif'), name: "Nothing Found.", key: '-1' }
         ]
     };
 
@@ -69,11 +70,11 @@ export default class ExerciseSelectionScreen extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
-                <View style={styles.searchBarStyle}>
-                    <Image style={styles.searchIcon} source={require('../assets/search.png')} />
+            <View style={styles.exercise_container}>
+                <View style={styles.search_bar_container}>
+                    <Image style={styles.search_icon} source={require('../assets/search.png')} />
                     <TextInput
-                        style={styles.searchBar}
+                        style={styles.search_bar}
                         placeholder='Search For Exercise'
                         onChangeText={ (text) => this.onSearch(text) }
                         spellCheck={true}
@@ -92,7 +93,7 @@ export default class ExerciseSelectionScreen extends Component {
                             onPress={this.onPress} 
                             img_path={item.path} 
                             item_name={item.name}
-                            gif_style={styles.gif}
+                            gif_style={styles.exercise_gif}
                             font_style={styles.exercise_label_text}
                         />
                     }
@@ -101,52 +102,6 @@ export default class ExerciseSelectionScreen extends Component {
         );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        justifyContent: 'center',
-        flex: 1,
-        backgroundColor: '#FFFFFF',
-    },
-    button: {
-        flex: 1,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#859a9b',
-    },
-    gif: {
-        flex: 1,
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'space-evenly',
-    },
-    searchBar: {
-        flex: 1,
-        textAlign: 'center',
-        height: 40,
-    },
-    searchBarStyle: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#f7f7f7',
-        borderRadius: 5,
-        margin: 10
-    },
-    searchIcon: {
-        padding: 10,
-        height: 25,
-        width: 25,
-        resizeMode: 'stretch',
-        alignItems: 'center'
-    },
-    exercise_label_text: {
-        fontSize: 50,
-        fontFamily: 'Roboto',
-        letterSpacing: 3
-    }
-});
 
 // skip this line if using Create React Native App
 AppRegistry.registerComponent('JoulesGym', () => ExerciseSelectionScreen);

@@ -1,13 +1,31 @@
 import React, { Component } from 'react';
 import { Alert, AppRegistry, Button, View, Text } from 'react-native';
 
+import styles from '../styles/styles.js';
+import CustomButton from '../components/CustomButton'
+
 export default class RecordExerciseDataScreen extends Component {
   render() {
     return (
       <View style={{ flex: 1, flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly' }}>
-        <Button title='Add to calculation' onPress={() => Alert.alert('Added to exercise to calculation')} />
-        <Button title='Select another exercise' onPress={() => this.props.navigation.navigate('Exercises')} />
-        <Button title='See results' onPress={() => this.props.navigation.navigate('Home')} />
+        <CustomButton 
+        onPress={() => Alert.alert('Added exercise.')}
+        button_style={styles.button}
+        text_style={styles.button_text}
+        text='ADD TO CALCULATION'
+        />
+        <CustomButton 
+        onPress={() => this.props.navigation.navigate('Excersises')}
+        button_style={styles.button}
+        text_style={styles.button_text}
+        text='ADD EXERCISE'
+        />
+        <CustomButton 
+        onPress={() => this.props.navigation.navigate('Home')}
+        button_style={styles.button}
+        text_style={styles.button_text}
+        text='CALCULATE'
+        />
       </View>
     );
   }
