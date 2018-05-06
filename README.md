@@ -1,4 +1,4 @@
-![JoulesGym Logo](https://github.com/einburger/JoulesGym/blob/master/logo.png)
+<p align="center">![JoulesGym Logo](https://github.com/einburger/JoulesGym/blob/master/logo.png) </p>
 
 ##### JoulesGym is a fitness app with three purposes:
 1. calculate expended energy of a certain exercise by using biological data and specifically tailored formulas (optional)
