@@ -11,6 +11,8 @@ import {
     FlatList
 } from 'react-native';
 
+import CustomListItem from '../components/CustomListItem';
+
 export default class ExerciseSelectionScreen extends Component {
 
     // the mutable state
@@ -91,15 +93,12 @@ export default class ExerciseSelectionScreen extends Component {
                 </View>
                 <FlatList
                     data={this.state.data}
-                    renderItem={({ item }) =>
-                        <View style={styles.buttonContainer}>
-                            <TouchableOpacity onPress={this.onPress}>
-                                <View style={styles.gif}>
-                                    <Image source={item.path} />
-                                    <Text fontSize='30'> {item.name} </Text>
-                                </View>
-                            </TouchableOpacity>
-                        </View>
+                    renderItem={({ item }) => 
+                        <CustomListItem 
+                            onPress={this.onPress} 
+                            img_path={item.path} 
+                            item_name={item.name}
+                        />
                     }
                 />
             </View>
