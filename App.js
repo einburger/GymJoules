@@ -5,6 +5,7 @@ import { StackNavigator } from 'react-navigation';
 import HomeScreen from './src/screens/Home'
 import ExerciseSelectionScreen from './src/screens/ExerciseSelection';
 import RecordExerciseDataScreen from './src/screens/RecordExerciseData';
+import CheckoutScreen from './src/screens/Checkout';
 
 
 const RootStack = StackNavigator(
