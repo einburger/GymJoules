@@ -10,7 +10,7 @@ export default class CheckoutScreen extends Component {
     return (
       <View style={{ flex: 1, flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly' }}>
             <Button title='Get Cucked' onPress={this.getCucked} />
-            <Button title='Go back home' onPress={this.props.navigation.navigate('Home')} />
+            <Button title='Go back home' onPress={() => this.props.navigation.navigate('Home')} />
       </View>
     );
   }
