@@ -5,3 +5,13 @@ JoulesGym is a fitness app using React Native with three purposes:
 
 Some other ideas (WIP):
 - create weekly workout plans
+
+------------------------------------------------------------------------------------------------------------------------
+TODO
+- [x] create home screen
+- [x] create exercise selection screen
+- [x] enable screen navigation
+- [ ] create exercise summary screen of user selected data
+- [ ] create dialog box that allows user to input number of sets and reps of selected exercise
+- [ ] create biological data input option (an optional thing)
+- [ ] enable transfer of user input to other screens that rely on them
