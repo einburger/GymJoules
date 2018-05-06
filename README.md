@@ -1,4 +1,4 @@
-<h1><center>JoulesGym</center></h1>
+<h1><p align="center">JoulesGym</p></h1>
 <h4><i><center>in React Native</center></i></h4>
 
 ##### JoulesGym is a fitness app using with three purposes:
