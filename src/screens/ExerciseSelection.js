@@ -16,7 +16,7 @@ export default class ExerciseSelectionScreen extends Component {
     state = {
         text: '',
         all_data: [
-            { path: require('../assets/arnold_curl.gif'), name: 'Arnold Curl', key: '0' },
+            { path: require('../assets/arnold_curl.gif'), name: 'Arnold Curl big boi', key: '0' },
             { path: require('../assets/dumbell_military_press.gif'), name: 'Military Press', key: '1' },
             { path: require('../assets/skullcrushers.gif'), name: 'Skull Crushers', key: '2' },
             { path: require('../assets/bench_press.gif'), name: 'Bench Press', key: '3' },
