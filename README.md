@@ -1,6 +1,5 @@
 <h1><p align="center">:muscle:JoulesGym:muscle:</p></h1>
 
----
 ##### JoulesGym is a fitness app with three purposes:
 1. calculate expended energy of a certain exercise by using biological data and specifically tailored formulas (optional)
 2. keep a journal of workouts done each day
