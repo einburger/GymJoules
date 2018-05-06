@@ -4,7 +4,7 @@ import { Alert, AppRegistry, Button, View, Text } from 'react-native';
 export default class RecordExerciseDataScreen extends Component {
   
   onPress = () => {
-    Alert.alert('Added to exercise to calculation')
+    Alert.alert('Added to exercise to calculation you fucking degenerate')
   }
   render() {
     return (
