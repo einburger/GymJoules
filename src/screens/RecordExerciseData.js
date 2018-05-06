@@ -4,7 +4,7 @@ import { Alert, AppRegistry, Button, View, Text } from 'react-native';
 export default class RecordExerciseDataScreen extends Component {
   
     addToCalc = () => {
-      Alert.alert(title="fucking llamas")
+      Alert.alert('fucking llamas')
     }
   render() {
     return (
