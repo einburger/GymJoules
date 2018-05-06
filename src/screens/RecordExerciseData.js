@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert, AppRegistry, Button, View, Text } from 'react-native';
+import { Alert, AppRegistry, Button, View, Text, TextInput } from 'react-native';
 
 export default class RecordExerciseDataScreen extends Component {
   
@@ -11,7 +11,7 @@ export default class RecordExerciseDataScreen extends Component {
       <View style={{ flex: 1, flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly' }}>
         <Button title='Add to calculation' onPress={this.addToCalc} />
         <Button title='Select another exercise' onPress={() => this.props.navigation.navigate('Exercises')} />
-        <Button title='See results' onPress={() => this.props.navigation.navigate('Home')} />
+        <Button title='See results' onPress={() => this.props.navigation.navigate('Checkout')} />
       </View>
     );
   }
