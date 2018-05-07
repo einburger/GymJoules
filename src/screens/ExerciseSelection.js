@@ -17,6 +17,7 @@ import CustomListItem from '../components/CustomListItem';
 export default class ExerciseSelectionScreen extends Component {
 
     // the mutable state
+    // the buttable state
     state = {
         all_data: [
             { path: require('../assets/arnold_curl.gif'), name: 'Arnold Curl', key: '0' },
@@ -35,10 +36,7 @@ export default class ExerciseSelectionScreen extends Component {
         ]
     };
 
-    onPress = (name) => {
-        console.log(name);
-        this.props.navigation.navigate('Record')
-    }
+    onPress = (name) => { this.props.navigation.navigate('Checkout', {exercise: name}) }
 
     onSearch = (text) => {
         let searched_text = text;
