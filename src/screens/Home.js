@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { AppRegistry, Button, View, Text, StyleSheet } from 'react-native';
+import { AppRegistry, Button, View, Text, Image, StyleSheet } from 'react-native';
+import CustomButton from '../components/CustomButton'
+
+import styles from '../styles/styles.js'
 
 export default class HomeScreen extends Component {
   onPress = () => {
@@ -7,32 +10,12 @@ export default class HomeScreen extends Component {
   }
   render() {
     return (
-      <View style={styles.mainView}>
-        <Button 
-          title='Add exercise to calculation' 
-          flex='1'
-          flexDirection='row'
-          color= '#74999e'
-          onPress={this.onPress} 
-        />
+      <View style={styles.home_page_view}>
+        <Image style={styles.logo} source={require('../../logo.png')} />
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  mainView: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#c1c4bc'
-  },
-  button: {
-    flex: 1,
-    flexDirection: 'row',
-    color: '#74999e'
-  }
-});
 // skip this line if using Create React Native App
 AppRegistry.registerComponent('JoulesGym', () => HomeScreen);

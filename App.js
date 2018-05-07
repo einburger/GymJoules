@@ -1,22 +1,26 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { StackNavigator } from 'react-navigation';
+import { Platform, StatusBar, StyleSheet, Text, View } from 'react-native';
+import { TabNavigator } from 'react-navigation';
 
 import HomeScreen from './src/screens/Home'
 import ExerciseSelectionScreen from './src/screens/ExerciseSelection';
 import RecordExerciseDataScreen from './src/screens/RecordExerciseData';
 import CheckoutScreen from './src/screens/Checkout';
 
-
-const RootStack = StackNavigator(
+const RootStack = TabNavigator(
   {
     Home: { screen: HomeScreen, },
     Exercises: { screen: ExerciseSelectionScreen, },
+<<<<<<< HEAD
     Record: { screen: RecordExerciseDataScreen, },
+=======
+    //Record: { screen: RecordExerciseDataScreen, },
+>>>>>>> master
     Checkout: { screen: CheckoutScreen, }
   },
   {
     initialRouteName: 'Home',
+    tabBarPosition: 'bottom'
   }
 );
 
