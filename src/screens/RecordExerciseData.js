@@ -14,18 +14,6 @@ export default class RecordExerciseDataScreen extends Component {
           text_style={styles.button_text}
           text='ADD TO CALCULATION'
         />
-        <CustomButton
-          onPress={() => this.props.navigation.navigate('Exercises')}
-          button_style={styles.button}
-          text_style={styles.button_text}
-          text='ADD EXERCISE'
-        />
-        <CustomButton
-          onPress={() => this.props.navigation.navigate('Home')}
-          button_style={styles.button}
-          text_style={styles.button_text}
-          text='CALCULATE'
-        />
       </View>
     );
   }
