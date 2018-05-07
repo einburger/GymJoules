@@ -11,7 +11,7 @@ const RootStack = TabNavigator(
   {
     Home: { screen: HomeScreen, },
     Exercises: { screen: ExerciseSelectionScreen, },
-    Record: { screen: RecordExerciseDataScreen, },
+   // Record: { screen: RecordExerciseDataScreen, },
     Checkout: { screen: CheckoutScreen, }
   },
   {
