@@ -48,8 +48,10 @@ export default class CheckoutScreen extends Component {
                     }
                     keyExtractor={(item, index) => item.key}
                 />
+
+                <View style={styles.button_row}>
                 <CustomButton
-                    onPress={() => this.addItem()}
+                    onPress={() => this.addItem}
                     button_style={styles.button}
                     text_style={styles.button_text}
                     text='ADD ITEM'
@@ -60,6 +62,7 @@ export default class CheckoutScreen extends Component {
                     text_style={styles.button_text}
                     text='CHECKOUT'
                 />
+               </View>
 
             </View>
         );
