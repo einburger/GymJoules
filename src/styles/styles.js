@@ -47,12 +47,12 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         backgroundColor: button_bg_color
     },
-
-    button_row: {
+    
+    button_container: {
         flex: 0,
         flexDirection: 'row',
         justifyContent: 'space-between'
-    }, 
+    },
 
     button_text: {
         fontSize: 20,

@@ -31,6 +31,10 @@ export default class CheckoutScreen extends Component {
     }
 
     beDone = () => {
+        this.setState(previousState => {
+            return { data: []}
+        });
+        Alert.alert('you dun did the exercises and now ya got cancer');
     }
 
     render() {
@@ -48,8 +52,7 @@ export default class CheckoutScreen extends Component {
                     }
                     keyExtractor={(item, index) => item.key}
                 />
-
-                <View style={styles.button_row}>
+                <View style={styles.button_container}>
                 <CustomButton
                     onPress={() => this.addItem}
                     button_style={styles.button}
@@ -62,7 +65,7 @@ export default class CheckoutScreen extends Component {
                     text_style={styles.button_text}
                     text='CHECKOUT'
                 />
-               </View>
+                </View>
 
             </View>
         );
