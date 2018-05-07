@@ -11,12 +11,14 @@ import {
     FlatList
 } from 'react-native';
 
+import styles from '../styles/styles'
+import CustomListItem from '../components/CustomListItem';
+
 export default class ExerciseSelectionScreen extends Component {
 
     // the mutable state
     // the buttable state
     state = {
-        text: '',
         all_data: [
             { path: require('../assets/arnold_curl.gif'), name: 'Arnold Curl', key: '0' },
             { path: require('../assets/dumbell_military_press.gif'), name: 'Military Press', key: '1' },
@@ -30,7 +32,7 @@ export default class ExerciseSelectionScreen extends Component {
             { path: require('../assets/bench_press.gif'), name: 'Bench Press', key: '3' },
         ],
         null_data: [
-            { path: '', name: "No Results Found.", key: '-1' }
+            { path: require('../assets/no_results.gif'), name: "Nothing Found.", key: '-1' }
         ]
     };
 
@@ -38,27 +40,25 @@ export default class ExerciseSelectionScreen extends Component {
         this.props.navigation.navigate('Record')
     }
 
-    onSearch = () => {
-        scanData = () => {
-            var workouts = this.state.all_data;
-            var new_data = [];
-            var text = this.state.text.toLowerCase();
-            for (var i = 0; i < workouts.length; i++) {
-                var name = workouts[i].name.toLowerCase();
-                if (name.indexOf(text) !== -1) {
-                    new_data.push(workouts[i]);
-                }
+    onSearch = (text) => {
+        let searched_text = text;
+        let workouts = this.state.all_data;
+        let searched_text_lowercase = searched_text.toLowerCase();
+
+        var new_data = [];
+        for (var i = 0; i < workouts.length; i++) {
+            var name = workouts[i].name.toLowerCase();
+            if (name.indexOf(searched_text_lowercase) !== -1) {
+                new_data.push(workouts[i]);
             }
-            return new_data;
         }
 
-        var new_data = scanData();
         if (new_data.length == 0) {
             this.setState(previousState => {
                 return { data: this.state.null_data }
             });
         }
-        else if (this.state.text != '') {
+        else if (this.state.searched_text != '') {
             this.setState(previousState => {
                 return { data: new_data }
             });
@@ -71,15 +71,13 @@ export default class ExerciseSelectionScreen extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
-                <View style={styles.searchBarStyle}>
-                    <Image style={styles.searchIcon} source={require('../assets/search.png')} />
+            <View style={styles.exercise_container}>
+                <View style={styles.search_bar_container}>
+                    <Image style={styles.search_icon} source={require('../assets/search.png')} />
                     <TextInput
-                        style={styles.searchBar}
+                        style={styles.search_bar}
                         placeholder='Search For Exercise'
-                        onChangeText={
-                            (text) => this.setState({ text }, () => { this.onSearch() })
-                        }
+                        onChangeText={ (text) => this.onSearch(text) }
                         spellCheck={true}
                         underlineColorAndroid='transparent'
                         clearTextOnFocus={true}
@@ -87,67 +85,24 @@ export default class ExerciseSelectionScreen extends Component {
                         inlineImageLeft='search_icon'
                         returnKeyType='search'
                         selectTextOnFocus={true}
-                        value={this.state.text}
                     />
                 </View>
                 <FlatList
                     data={this.state.data}
-                    renderItem={({ item }) =>
-                        <View style={styles.buttonContainer}>
-                            <TouchableOpacity onPress={this.onPress}>
-                                <View style={styles.gif}>
-                                    <Image source={item.path} />
-                                    <Text fontSize='30'> {item.name} </Text>
-                                </View>
-                            </TouchableOpacity>
-                        </View>
+                    renderItem={({ item }) => 
+                        <CustomListItem 
+                            onPress={this.onPress} 
+                            img_path={item.path} 
+                            item_name={item.name}
+                            gif_style={styles.exercise_gif}
+                            font_style={styles.exercise_label_text}
+                        />
                     }
                 />
             </View>
         );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        justifyContent: 'center',
-        flex: 1,
-        backgroundColor: '#FFFFFF',
-    },
-    button: {
-        flex: 1,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#859a9b',
-    },
-    gif: {
-        flex: 1,
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'space-evenly',
-    },
-    searchBar: {
-        flex: 1,
-        textAlign: 'center',
-        height: 40,
-    },
-    searchBarStyle: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#f7f7f7',
-        borderRadius: 5,
-        margin: 10
-    },
-    searchIcon: {
-        padding: 10,
-        height: 25,
-        width: 25,
-        resizeMode: 'stretch',
-        alignItems: 'center'
-    }
-});
 
 // skip this line if using Create React Native App
 AppRegistry.registerComponent('JoulesGym', () => ExerciseSelectionScreen);
