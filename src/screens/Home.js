@@ -12,11 +12,6 @@ export default class HomeScreen extends Component {
     return (
       <View style={styles.home_page_view}>
         <Image style={styles.logo} source={require('../../logo.png')} />
-        <CustomButton 
-          onPress={this.onPress}
-          button_style={styles.button}
-          text_style={styles.button_text}
-          text='ADD EXERCISE'/>
       </View>
     );
   }
