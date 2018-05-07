@@ -3,8 +3,8 @@ import { StyleSheet } from 'react-native';
 
 import Expo from 'expo';
 
-let bg_color = '#303235';
-let fg_color = '#c5c8c6';
+let bg_color = '#fff';
+let fg_color = '#f2f2f2';
 
 let button_bg_color = '#5f819d';
 let button_fg_color = '#81a2be';
@@ -14,7 +14,7 @@ let label_text_color = '#000';
 let search_bg_color = '#373b41';
 let search_text_color = '#cc6666';
 
-let exercise_border_color = '#5f819d';
+let exercise_border_color = '#000';
 let exercise_wrapper_bg = fg_color;
 
 const styles = StyleSheet.create({
@@ -57,28 +57,30 @@ const styles = StyleSheet.create({
         paddingTop: Expo.Constants.statusBarHeight,
         justifyContent: 'center',
         flex: 1,
-        backgroundColor: bg_color,
+        backgroundColor: '#fff',
     },
     exercise_gif: {
         flex: 1,
         flexDirection: 'column',
         alignItems: 'center',
+        borderRadius: 5,
         justifyContent: 'space-evenly',
     },
     exercise_button_wrapper: {
         justifyContent: 'center',
         backgroundColor: exercise_wrapper_bg,
         elevation: 10,
-        borderWidth: 5,
         borderRadius: 5,
         borderColor: exercise_border_color,
         margin: 20
     },
     exercise_label_text: {
+        opacity: 20,
         fontSize: 40,
         fontFamily: 'Roboto',
         textAlign: 'center',
-        color: bg_color,
+        fontWeight: 'bold',
+        color: '#b5b5b5',
     },
 
     search_bar: {

@@ -6,7 +6,7 @@ const customlistitem = (props) => {
         <View style={props.exercise_button_wrapper}>
             <TouchableOpacity onPress={props.onPress}>
                 <View style={props.gif_style}>
-                    <Image source={props.img_path}/>
+                    <Image resizeMode='stretch' source={props.img_path}/>
                 </View>
             </TouchableOpacity>
             <Text style={props.font_style}> 
