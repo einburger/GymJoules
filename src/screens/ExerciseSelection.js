@@ -35,7 +35,8 @@ export default class ExerciseSelectionScreen extends Component {
         ]
     };
 
-    onPress = () => {
+    onPress = (item) => {
+        console.log();
         this.props.navigation.navigate('Record')
     }
 
@@ -76,7 +77,7 @@ export default class ExerciseSelectionScreen extends Component {
                     <TextInput
                         style={styles.search_bar}
                         placeholder='Search For Exercise'
-                        onChangeText={ (text) => this.onSearch(text) }
+                        onChangeText={ (text) => this.onSearch() }
                         spellCheck={true}
                         underlineColorAndroid='transparent'
                         clearTextOnFocus={true}
@@ -90,7 +91,7 @@ export default class ExerciseSelectionScreen extends Component {
                     data={this.state.data}
                     renderItem={({ item }) => 
                         <CustomListItem 
-                            onPress={this.onPress} 
+                            onPress={ (item) => this.onPress() } 
                             img_path={item.path} 
                             item_name={item.name}
                             gif_style={styles.exercise_gif}
