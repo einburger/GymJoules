@@ -17,13 +17,14 @@ import CustomListItem from '../components/CustomListItem';
 import CustomButton from '../components/CustomButton';
 
 export default class CheckoutScreen extends Component {
+
     state = {
         data: [{name: 'A', key: '0'}, {name: 'B', key: '1'}, {name: 'C', key: '2'},{name: 'D', key: '3'}], 
     }
 
     addItem = () => {
-        this.setState((previousState) => {
-            return {data: previousState.data.push({name: 'Daddy', key: '4'})};
+        this.setState(previousState => {
+            return { data: [...previousState.data, {name: 'X', key: 'x'}]}
         });
     }
 
