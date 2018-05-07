@@ -15,7 +15,7 @@ export default class RecordExerciseDataScreen extends Component {
         text='ADD TO CALCULATION'
         />
         <CustomButton 
-        onPress={() => this.props.navigation.navigate('Excersises')}
+        onPress={() => this.props.navigation.navigate('Exercises')}
         button_style={styles.button}
         text_style={styles.button_text}
         text='ADD EXERCISE'
