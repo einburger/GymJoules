@@ -20,16 +20,13 @@ export default class CheckoutScreen extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            data: [{ name: 'A', key: 'a' },
-            { name: 'B', key: 'b' },
-            { name: 'C', key: 'c' },
-            { name: 'D', key: 'd' }]
+            data: []
         };
     }
 
     addItem = () => {
         this.setState(previousState => {
-            return { data: [...previousState.data, {name: this.props.navigation.state.params.exercise, key: 'x'}]}
+            return { data: [...previousState.data, { name: this.props.navigation.state.params.exercise, key: '0' }] }
         });
     }
 
@@ -42,11 +39,12 @@ export default class CheckoutScreen extends Component {
                 <FlatList
                     data={this.state.data}
                     renderItem={({ item }) =>
-                        <View>
                         <CustomListItem
                             item_name={item.name}
+                            gif_style={styles.exercise_gif}
+                            font_style={styles.exercise_label_text}
+                            exercise_button_wrapper={styles.exercise_button_wrapper}
                         />
-                        </View>
                     }
                     keyExtractor={(item, index) => item.key}
                 />
