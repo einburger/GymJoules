@@ -54,7 +54,7 @@ export default class CheckoutScreen extends Component {
                 />
                 <View style={styles.button_container}>
                 <CustomButton
-                    onPress={() => this.addItem}
+                    onPress={() => this.addItem()}
                     button_style={styles.button}
                     text_style={styles.button_text}
                     text='ADD ITEM'
