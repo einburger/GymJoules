@@ -5,14 +5,30 @@ import styles from '../styles/styles';
 import CustomButton from '../components/CustomButton'
 
 export default class RecordExerciseDataScreen extends Component {
+  
+  onPress = () => {
+    Alert.alert('Added to exercise to calculation you fucking degenerate')
+  }
   render() {
     return (
       <View style={styles.record_data_view}>
-        <CustomButton
-          onPress={() => Alert.alert('Added exercise.')}
-          button_style={styles.button}
-          text_style={styles.button_text}
-          text='ADD TO CALCULATION'
+        <CustomButton 
+        onPress={() => this.props.navigation.navigate('Checkout')}
+        button_style={styles.button}
+        text_style={styles.button_text}
+        text='ADD TO CALCULATION'
+        />
+        <CustomButton 
+        onPress={() => this.props.navigation.navigate('Exercises')}
+        button_style={styles.button}
+        text_style={styles.button_text}
+        text='ADD EXERCISE'
+        />
+        <CustomButton 
+        onPress={() => this.props.navigation.navigate('Home')}
+        button_style={styles.button}
+        text_style={styles.button_text}
+        text='CALCULATE'
         />
       </View>
     );

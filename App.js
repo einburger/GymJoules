@@ -5,13 +5,14 @@ import { TabNavigator } from 'react-navigation';
 import HomeScreen from './src/screens/Home'
 import ExerciseSelectionScreen from './src/screens/ExerciseSelection';
 import RecordExerciseDataScreen from './src/screens/RecordExerciseData';
-
+import CheckoutScreen from './src/screens/Checkout';
 
 const RootStack = TabNavigator(
   {
     Home: { screen: HomeScreen, },
     Exercises: { screen: ExerciseSelectionScreen, },
-    Record: { screen: RecordExerciseDataScreen, }
+    //Record: { screen: RecordExerciseDataScreen, },
+    Checkout: { screen: CheckoutScreen, }
   },
   {
     initialRouteName: 'Home',
