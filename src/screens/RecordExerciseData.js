@@ -8,23 +8,23 @@ export default class RecordExerciseDataScreen extends Component {
   render() {
     return (
       <View style={styles.record_data_view}>
-        <CustomButton 
-        onPress={() => Alert.alert('Added exercise.')}
-        button_style={styles.button}
-        text_style={styles.button_text}
-        text='ADD TO CALCULATION'
+        <CustomButton
+          onPress={() => Alert.alert('Added exercise.')}
+          button_style={styles.button}
+          text_style={styles.button_text}
+          text='ADD TO CALCULATION'
         />
-        <CustomButton 
-        onPress={() => this.props.navigation.navigate('Exercises')}
-        button_style={styles.button}
-        text_style={styles.button_text}
-        text='ADD EXERCISE'
+        <CustomButton
+          onPress={() => this.props.navigation.navigate('Exercises')}
+          button_style={styles.button}
+          text_style={styles.button_text}
+          text='ADD EXERCISE'
         />
-        <CustomButton 
-        onPress={() => this.props.navigation.navigate('Home')}
-        button_style={styles.button}
-        text_style={styles.button_text}
-        text='CALCULATE'
+        <CustomButton
+          onPress={() => this.props.navigation.navigate('Home')}
+          button_style={styles.button}
+          text_style={styles.button_text}
+          text='CALCULATE'
         />
       </View>
     );
