@@ -84,7 +84,6 @@ const styles = StyleSheet.create({
     exercise_label_text: {
         opacity: 20,
         fontSize: 40,
-        paddingLeft: 11,
         fontFamily: 'Roboto',
         textAlign: 'left',
         fontWeight: 'bold',
