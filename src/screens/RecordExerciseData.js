@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import { Alert, AppRegistry, Button, View, Text } from 'react-native';
+import { Alert, AppRegistry, Button, View, Text, TextInput } from 'react-native';
 
 import styles from '../styles/styles';
 import CustomButton from '../components/CustomButton'
 
 export default class RecordExerciseDataScreen extends Component {
 
-  onPress = () => {
-    Alert.alert('Added to exercise to calculation you fucking degenerate')
-  }
   render() {
     return (
       <View style={styles.record_data_view}>

@@ -8,11 +8,13 @@ import {
     View,
     Text,
     TextInput,
-    FlatList
+    FlatList,
+    Modal
 } from 'react-native';
 
 import styles from '../styles/styles'
 import CustomListItem from '../components/CustomListItem';
+import CustomButton from '../components/CustomButton';
 
 export default class ExerciseSelectionScreen extends Component {
 
@@ -33,10 +35,63 @@ export default class ExerciseSelectionScreen extends Component {
         ],
         null_data: [
             { path: require('../assets/no_results.gif'), name: "Nothing Found.", key: '-1' }
-        ]
+        ],
+        modalVisible: false,
+        _name: 'pussy',
+        reps: 0,
+        sets: 0,
     };
 
-    onPress = (name) => { this.props.navigation.navigate('Checkout', { exercise: name }) }
+    onPress = (name) => { 
+        this.setState({_name: name})
+        this.setState({modalVisible: true})
+    //    this.props.navigation.navigate('Checkout', { exercise: name }) 
+        
+    }
+
+    onCancel = () => {
+        this.setState({reps: 0});
+        this.setState({sets: 0});
+        this.setState({modalVisible: false});
+    }
+
+    onSubmit = (name, reps, sets) => {
+        this.setState({modalVisible: false});
+        this.props.navigation.navigate('Checkout', { exercise: name, reps: reps, sets: sets}); 
+    }
+
+    renderModal = () => (
+        <View style={styles.modalContent}>
+            <View style={styles.button_container}>
+                {/*enter reps*/}
+                <TextInput
+                    style={styles.input_text}
+                    placeholder='enter reps'
+                    onChangeText={(text) => {this.setState({reps: text})}}
+                />
+                {/*enter sets*/}
+                <TextInput 
+                    style={styles.input_text}
+                    placeholder='enter sets'
+                    onChangeText={(text) => {this.setState({sets: text})}}
+                />
+            </View>
+            <View style={styles.button_container}>
+                <CustomButton
+                    onPress={() => this.onSubmit(this.state._name, this.state.reps, this.state.sets)}
+                    button_style={styles.button}
+                    text_style={styles.button_text}
+                    text='Submit'
+                />
+                <CustomButton
+                    onPress={() => this.onCancel()}
+                    button_style={styles.button}
+                    text_style={styles.button_text}
+                    text='Cancel'
+                />
+            </View>
+        </View>
+    );
 
     onSearch = (text) => {
         let searched_text = text;
@@ -101,6 +156,9 @@ export default class ExerciseSelectionScreen extends Component {
                         />
                     }
                 />
+                <Modal animeationStyle="slide" transparent={true} visible={this.state.modalVisible} style={styles.bottomModal} onRequestClose={() => {Alert.alert('modal is closed')}}>
+                    {this.renderModal()}
+                </Modal>
             </View>
         );
     }
