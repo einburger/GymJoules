@@ -136,7 +136,19 @@ const styles = StyleSheet.create({
         width: 25,
         resizeMode: 'stretch',
         alignItems: 'center'
-    }
+    },
+    
+    checkout_list_item: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        backgroundColor: 'black',
+        elevation: 5,
+        margin: 10,
+        //borderRadius: 5,
+        borderColor: exercise_border_color,
+    },
+
 });
 
 export default styles;

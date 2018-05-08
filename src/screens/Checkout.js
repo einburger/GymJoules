@@ -24,42 +24,56 @@ export default class CheckoutScreen extends Component {
         this.state = {
             data: [],
             modalVisible: false,
-            sets: 0,
-            reps: 0
+            sets: 0, 
+            reps: 0 
         };
     }
 
+    componentDidMount() {
+        this.props.navigation.addListener('willFocus', () => this.addItem() );
+    }
+
     addItem = () => {
+        if (!this.props.navigation.state.params.statechange) {
+            return;
+        }
         this.setState(previousState => {
-            return { data: [...previousState.data, { name: this.props.navigation.state.params.exercise, 
-                                                     reps: this.props.navigation.state.params.reps, 
-                                                     sets: this.props.navigation.state.params.sets, key: '0' }] }
+            return {
+                data: [...previousState.data,
+                {
+                    name: this.props.navigation.state.params.exercise,
+                    reps: this.props.navigation.state.params.reps,
+                    sets: this.props.navigation.state.params.sets, key: '0'
+                }
+                ]
+            }
         });
+        this.props.navigation.state.params.statechange = false; 
     }
 
     renderModal = () => (
         <View style={styles.modalContent}>
-        <Text>
-            {'reps: '}{this.state.reps}{' sets: '}{this.state.sets}
-        </Text>
-        <CustomButton
-            onPress={() => this.setState({modalVisible: false})}
-            button_style={styles.button}
-            text_style={styles.button_text}
-            text='OK'
-        />
-    </View>
+            <Text>
+                {'reps: '}{this.state.reps}{' sets: '}{this.state.sets}
+            </Text>
+            <CustomButton
+                onPress={() => this.setState({ modalVisible: false })}
+                button_style={styles.button}
+                text_style={styles.button_text}
+                text='OK'
+            />
+        </View>
     );
 
     onPress = (reps, sets) => {
-        this.setState({reps: reps});
-        this.setState({sets: sets});
-        this.setState({modalVisible: true});
+        this.setState({ reps: reps });
+        this.setState({ sets: sets });
+        this.setState({ modalVisible: true });
     }
 
     beDone = () => {
         this.setState(previousState => {
-            return { data: []}
+            return { data: [] }
         });
         Alert.alert('you dun did the exercises and now ya got cancer');
     }
@@ -71,17 +85,18 @@ export default class CheckoutScreen extends Component {
                     data={this.state.data}
                     renderItem={({ item }) =>
                         <CheckoutListItem
-                            onPress={() => this.onPress(item.reps, item.sets)}
                             item_name={item.name}
+                            sets={item.sets}
+                            reps={item.reps}
                             font_style={styles.exercise_label_text}
-                            exercise_button_wrapper={styles.exercise_button_wrapper}
+                            checkout_list_item={styles.checkout_list_item}
                         />
                     }
                     keyExtractor={(item, index) => item.key}
                 />
                 <View style={styles.button_container}>
                     <CustomButton
-                    onPress={() => this.addItem()}
+                        onPress={() => this.addItem()}
                         button_style={styles.button}
                         text_style={styles.button_text}
                         text='ADD ITEM'
@@ -92,8 +107,8 @@ export default class CheckoutScreen extends Component {
                         text_style={styles.button_text}
                         text='CHECKOUT'
                     />
-                    
-                    <Modal animeationStyle="slide" transparent={true} visible={this.state.modalVisible} onRequestClose={() => {Alert.alert('modal is closed')}}>
+
+                    <Modal animeationStyle="slide" transparent={true} visible={this.state.modalVisible} onRequestClose={() => { Alert.alert('modal is closed') }}>
                         {this.renderModal()}
                     </Modal>
                 </View>
