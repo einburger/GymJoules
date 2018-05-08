@@ -1,7 +1,7 @@
 
 <p align="center"><img src="https://github.com/einburger/JoulesGym/blob/master/logo.png"></p>
 
-<p align="center"><img src="https://github.com/einburger/JoulesGym/blob/master/screen1.jpeg"></p>
+<p align="center"><img src="https://github.com/einburger/JoulesGym/blob/master/screen1.jpg"></p>
 
 ##### JoulesGym is a fitness app with three purposes:
 1. calculate expended energy of a certain exercise by using biological data and specifically tailored formulas (optional)
