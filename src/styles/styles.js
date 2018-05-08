@@ -90,6 +90,27 @@ const styles = StyleSheet.create({
         color: '#b5b5b5',
     },
 
+    input_text: {
+        flex: 1,
+        height: 40,
+        fontFamily: 'Roboto',
+        color: '#a9a9a9'
+    },
+
+    modalContent: {
+        backgroundColor: 'white',
+        padding: 22,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 4,
+        borderColor: 'rgba(0, 0, 0, 0.1)',
+    },
+
+    bottomModal: {
+        justifyContent: 'flex-end',
+        margin: 0,
+    },
+
     search_bar: {
         flex: 1,
         height: 40,
