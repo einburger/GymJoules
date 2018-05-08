@@ -70,20 +70,22 @@ export default class ExerciseSelectionScreen extends Component {
     render() {
         return (
             <View style={styles.exercise_container}>
-                <View style={styles.search_bar_container}>
-                    <Image style={styles.search_icon} source={require('../assets/search.png')} />
-                    <TextInput
-                        style={styles.search_bar}
-                        placeholder='Search For Exercise'
-                        onChangeText={(text) => this.onSearch(text)}
-                        spellCheck={true}
-                        underlineColorAndroid='transparent'
-                        clearTextOnFocus={true}
-                        clearButtonMode='while-editing'
-                        inlineImageLeft='search_icon'
-                        returnKeyType='search'
-                        selectTextOnFocus={true}
-                    />
+                <View style={{elevation: 4, backgroundColor: '#f2f2f2'}}>
+                    <View style={styles.search_bar_container}>
+                        <Image style={styles.search_icon} source={require('../assets/search.png')} />
+                        <TextInput
+                            style={styles.search_bar}
+                            placeholder='Search For Exercise'
+                            onChangeText={(text) => this.onSearch(text)}
+                            spellCheck={true}
+                            underlineColorAndroid='transparent'
+                            clearTextOnFocus={true}
+                            clearButtonMode='while-editing'
+                            inlineImageLeft='search_icon'
+                            returnKeyType='search'
+                            selectTextOnFocus={true}
+                        />
+                    </View>
                 </View>
                 <FlatList
                     data={this.state.data}
@@ -94,6 +96,7 @@ export default class ExerciseSelectionScreen extends Component {
                             item_name={item.name}
                             gif_style={styles.exercise_gif}
                             font_style={styles.exercise_label_text}
+                            switch_style={styles.switch_style}
                             exercise_button_wrapper={styles.exercise_button_wrapper}
                         />
                     }

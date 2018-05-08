@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { TouchableOpacity, View, Text } from 'react-native';
+import { TouchableOpacity, View, Text, Switch } from 'react-native';
 
 const custombutton = (props) => {
     return (

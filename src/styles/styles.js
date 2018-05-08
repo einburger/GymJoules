@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
         paddingTop: Expo.Constants.statusBarHeight,
         justifyContent: 'center',
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: '#e5deda',
     },
     exercise_gif: {
         flex: 1,
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     exercise_button_wrapper: {
         justifyContent: 'center',
         backgroundColor: exercise_wrapper_bg,
-        elevation: 10,
+        elevation: 5,
         borderRadius: 5,
         borderColor: exercise_border_color,
         margin: 20
@@ -77,10 +77,13 @@ const styles = StyleSheet.create({
     exercise_label_text: {
         opacity: 20,
         fontSize: 40,
+        paddingLeft: 11,
         fontFamily: 'Roboto',
-        textAlign: 'center',
+        textAlign: 'left',
         fontWeight: 'bold',
         color: '#b5b5b5',
+    },
+    switch_style: {
     },
 
     search_bar: {
