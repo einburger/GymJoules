@@ -15,8 +15,13 @@
 - [x] enable screen navigation
 - [x] create exercise summary screen of user selected data
 - [x] create dialog box that allows user to input number of sets and reps of selected exercise
-- [ ] create biological data input option (an optional thing)
 - [x] enable transfer of user input to other screens that rely on them
+- [ ] fix up the exercise listview to show sets and reps
+- [ ] most recently selected exercises view on homepage
+- [ ] ability to 'favorite' certain exercises
 - [ ] implement some type of database to store previous selections
 - [ ] create a calendar to view previous days
 - [ ] create backend for energy calculations
+- [ ] create biological data input option (an optional thing)
+- [ ] graphs
+
