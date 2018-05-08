@@ -8,6 +8,7 @@
 ---
 ##### Some other ideas (WIP):
 1. create weekly workout plans
+2. option to change gif view to name view
 ---
 ##### TODO:
 - [x] create home screen
@@ -19,6 +20,7 @@
 - [ ] fix up the exercise listview to show sets and reps
 - [ ] most recently selected exercises view on homepage
 - [ ] ability to 'favorite' certain exercises
+- [ ] create settings menu
 - [ ] implement some type of database to store previous selections
 - [ ] create a calendar to view previous days
 - [ ] create backend for energy calculations
