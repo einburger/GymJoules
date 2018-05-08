@@ -92,6 +92,15 @@ const styles = StyleSheet.create({
     switch_style: {
     },
 
+    checkout_label_text: {
+        opacity: 20,
+        fontSize: 30,
+        fontFamily: 'Roboto',
+        textAlign: 'left',
+        fontWeight: 'bold',
+        color: '#b5b5b5',
+    },
+
     input_text: {
         flex: 1,
         height: 40,

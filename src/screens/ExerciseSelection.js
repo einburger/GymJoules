@@ -40,6 +40,7 @@ export default class ExerciseSelectionScreen extends Component {
             _name: 'pussy',
             reps: 0,
             sets: 0,
+            weight: 0.0,
         };
     }
 
@@ -54,30 +55,36 @@ export default class ExerciseSelectionScreen extends Component {
         this.setState({ modalVisible: false });
     }
 
-    onSubmit = (name, reps, sets) => {
+    onSubmit = (name, reps, sets, weight) => {
         this.setState({ modalVisible: false });
-        this.props.navigation.navigate('Checkout', { exercise: name, reps: reps, sets: sets, statechange: true});
+        this.props.navigation.navigate('Checkout', { exercise: name, reps: reps, sets: sets, weight: weight, statechange: true});
     }
 
     renderModal = () => (
         <View style={styles.modalContent}>
             <View style={styles.button_container}>
-                {/*enter reps*/}
-                <TextInput
-                    style={styles.input_text}
-                    placeholder='enter reps'
-                    onChangeText={(text) => { this.setState({ reps: text }) }}
-                />
                 {/*enter sets*/}
                 <TextInput
                     style={styles.input_text}
                     placeholder='enter sets'
                     onChangeText={(text) => { this.setState({ sets: text }) }}
                 />
+                {/*enter reps*/}
+                <TextInput
+                    style={styles.input_text}
+                    placeholder='enter reps'
+                    onChangeText={(text) => { this.setState({ reps: text }) }}
+                />
+                {/*enter weight*/}
+                <TextInput
+                    style={styles.input_text}
+                    placeholder='enter weight'
+                    onChangeText={(text) => { this.setState({ weight: text }) }}
+                />
             </View>
             <View style={styles.button_container}>
                 <CustomButton
-                    onPress={() => this.onSubmit(this.state._name, this.state.reps, this.state.sets)}
+                    onPress={() => this.onSubmit(this.state._name, this.state.reps, this.state.sets, this.state.weight)}
                     button_style={styles.button}
                     text_style={styles.button_text}
                     text='Submit'

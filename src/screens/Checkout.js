@@ -43,7 +43,8 @@ export default class CheckoutScreen extends Component {
                 {
                     name: this.props.navigation.state.params.exercise,
                     reps: this.props.navigation.state.params.reps,
-                    sets: this.props.navigation.state.params.sets, key: '0'
+                    sets: this.props.navigation.state.params.sets, 
+                    weight: this.props.navigation.state.params.weight, key: '0'
                 }
                 ]
             }
@@ -75,7 +76,7 @@ export default class CheckoutScreen extends Component {
         this.setState(previousState => {
             return { data: [] }
         });
-        Alert.alert('you dun did the exercises and now ya got cancer');
+        Alert.alert('you burned: 1231293713 calories. You are dead.');
     }
 
     render() {
@@ -88,7 +89,8 @@ export default class CheckoutScreen extends Component {
                             item_name={item.name}
                             sets={item.sets}
                             reps={item.reps}
-                            font_style={styles.exercise_label_text}
+                            weight={item.weight}
+                            font_style={styles.checkout_label_text}
                             checkout_list_item={styles.checkout_list_item}
                         />
                     }
