@@ -24,13 +24,13 @@ export default class CheckoutScreen extends Component {
         this.state = {
             data: [],
             modalVisible: false,
-            sets: 0, 
-            reps: 0 
+            sets: 0,
+            reps: 0
         };
     }
 
     componentDidMount() {
-        this.props.navigation.addListener('willFocus', () => this.addItem() );
+        this.props.navigation.addListener('willFocus', () => this.addItem());
     }
 
     addItem = () => {
@@ -48,7 +48,7 @@ export default class CheckoutScreen extends Component {
                 ]
             }
         });
-        this.props.navigation.state.params.statechange = false; 
+        this.props.navigation.state.params.statechange = false;
     }
 
     renderModal = () => (
@@ -96,18 +96,11 @@ export default class CheckoutScreen extends Component {
                 />
                 <View style={styles.button_container}>
                     <CustomButton
-                        onPress={() => this.addItem()}
-                        button_style={styles.button}
-                        text_style={styles.button_text}
-                        text='ADD ITEM'
-                    />
-                    <CustomButton
                         onPress={this.beDone}
                         button_style={styles.button}
                         text_style={styles.button_text}
                         text='CHECKOUT'
                     />
-
                     <Modal animeationStyle="slide" transparent={true} visible={this.state.modalVisible} onRequestClose={() => { Alert.alert('modal is closed') }}>
                         {this.renderModal()}
                     </Modal>

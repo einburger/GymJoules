@@ -56,7 +56,13 @@ export default class ExerciseSelectionScreen extends Component {
 
     onSubmit = (name, reps, sets) => {
         this.setState({ modalVisible: false });
-        this.props.navigation.navigate('Checkout', { exercise: name, reps: reps, sets: sets, statechange: true});
+        this.props.navigation.navigate('Checkout',
+            {
+                exercise: name,
+                reps: reps,
+                sets: sets,
+                statechange: true
+            });
     }
 
     renderModal = () => (
