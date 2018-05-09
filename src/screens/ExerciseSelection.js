@@ -147,7 +147,7 @@ export default class ExerciseSelectionScreen extends Component {
                         />
                     </View>
                 </View>
-                <FlatList
+                <FlatList 
                     data={this.state.data}
                     renderItem={({ item }) =>
                         <CustomListItem
@@ -161,7 +161,12 @@ export default class ExerciseSelectionScreen extends Component {
                         />
                     }
                 />
-                <Modal animeationStyle="slide" transparent={true} visible={this.state.modalVisible} style={styles.bottomModal} onRequestClose={() => { Alert.alert('modal is closed') }}>
+                <Modal 
+                    animeationStyle="slide"
+                    transparent={true}
+                    visible={this.state.modalVisible}
+                    style={styles.bottomModal}
+                    onRequestClose={() => { Alert.alert('modal is closed') }} >
                     {this.renderModal()}
                 </Modal>
             </View>
