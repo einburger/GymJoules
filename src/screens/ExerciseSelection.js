@@ -94,14 +94,20 @@ export default class ExerciseSelectionScreen extends Component {
                 {/*enter sets*/}
                 <TextInput
                     style={styles.input_text}
-                    placeholder='enter weight'
-                    onChangeText={(text) => { this.setState({ weight: text }) }}
+                    placeholder='enter sets'
+                    onChangeText={(text) => { this.setState({ sets: text }) }}
                 />
                 {/*enter reps*/}
                 <TextInput
                     style={styles.input_text}
                     placeholder='enter reps'
                     onChangeText={(text) => { this.setState({ reps: text }) }}
+                />
+                {/*enter weight*/}
+                <TextInput
+                    style={styles.input_text}
+                    placeholder='enter weight'
+                    onChangeText={(text) => { this.setState({ weight: text }) }}
                 />
             </View>
             <View style={styles.button_container}>
