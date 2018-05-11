@@ -5,9 +5,15 @@ import CustomButton from '../components/CustomButton'
 import styles from '../styles/styles.js'
 
 export default class HomeScreen extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+
   onPress = () => {
     this.props.navigation.navigate('Exercises')
   }
+
   render() {
     return (
       <View style={styles.home_page_view}>

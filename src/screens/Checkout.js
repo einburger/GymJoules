@@ -20,70 +20,21 @@ import CheckoutListItem from '../components/CheckoutListItem';
 
 export default class CheckoutScreen extends Component {
     constructor(props) {
-        super(props)
-        this.state = {
-            data: [],
-            modalVisible: false,
-            sets: 0,
-            reps: 0
-        };
-    }
-
-    componentDidMount() {
-        this.props.navigation.addListener('willFocus', () => this.addItem());
-    }
-
-    addItem = () => {
-        if (!this.props.navigation.state.params.statechange) {
-            return;
-        }
-        this.setState(previousState => {
-            return {
-                data: [...previousState.data,
-                {
-                    name: this.props.navigation.state.params.exercise,
-                    reps: this.props.navigation.state.params.reps,
-                    sets: this.props.navigation.state.params.sets, key: '0'
-                }
-                ]
-            }
-        });
-        this.props.navigation.state.params.statechange = false;
-    }
-
-    renderModal = () => (
-        <View style={styles.modalContent}>
-            <Text>
-                {'reps: '}{this.state.reps}{' sets: '}{this.state.sets}
-            </Text>
-            <CustomButton
-                onPress={() => this.setState({ modalVisible: false })}
-                button_style={styles.button}
-                text_style={styles.button_text}
-                text='OK'
-            />
-        </View>
-    );
-
-    onPress = (reps, sets) => {
-        this.setState({ reps: reps });
-        this.setState({ sets: sets });
-        this.setState({ modalVisible: true });
+        super(props);
     }
 
     beDone = () => {
-        this.setState(previousState => {
-            return { data: [] }
-        });
+        // pass in prop function from App.js
         Alert.alert('you dun did the exercises and now ya got cancer');
     }
 
     render() {
+        console.log("what");
         return (
             <View style={styles.record_data_view}>
                 <FlatList
-                    data={this.state.data}
-                    renderItem={({ item }) =>
+                    data={this.props.workout_list}
+                    renderItem={({item}) =>
                         <CheckoutListItem
                             item_name={item.name}
                             sets={item.sets}
@@ -94,18 +45,6 @@ export default class CheckoutScreen extends Component {
                     }
                     keyExtractor={(item, index) => item.key}
                 />
-                <View style={styles.button_container}>
-                    <CustomButton
-                        onPress={this.beDone}
-                        button_style={styles.button}
-                        text_style={styles.button_text}
-                        text='CHECKOUT'
-                    />
-                    <Modal animeationStyle="slide" transparent={true} visible={this.state.modalVisible} onRequestClose={() => { Alert.alert('modal is closed') }}>
-                        {this.renderModal()}
-                    </Modal>
-                </View>
-
             </View>
         );
     };

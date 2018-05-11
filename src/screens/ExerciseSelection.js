@@ -15,32 +15,25 @@ import {
 import styles from '../styles/styles'
 import CustomListItem from '../components/CustomListItem';
 import CustomButton from '../components/CustomButton';
+import NavigationService from '../../NavigationService.js';
 
 export default class ExerciseSelectionScreen extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            all_data: [
-                { path: require('../assets/arnold_curl.gif'), name: 'Arnold Curl', key: '0' },
-                { path: require('../assets/dumbell_military_press.gif'), name: 'Military Press', key: '1' },
-                { path: require('../assets/skullcrushers.gif'), name: 'Skull Crushers', key: '2' },
-                { path: require('../assets/bench_press.gif'), name: 'Bench Press', key: '3' },
-            ],
-            data: [
-                { path: require('../assets/arnold_curl.gif'), name: 'Arnold Curl', key: '0' },
-                { path: require('../assets/dumbell_military_press.gif'), name: 'Military Press', key: '1' },
-                { path: require('../assets/skullcrushers.gif'), name: 'Skull Crushers', key: '2' },
-                { path: require('../assets/bench_press.gif'), name: 'Bench Press', key: '3' },
-            ],
-            null_data: [
-                { path: require('../assets/no_results.gif'), name: "Nothing Found.", key: '-1' }
-            ],
+            data: [...this.props.workouts],
             modalVisible: false,
             _name: 'pussy',
             reps: 0,
             sets: 0,
         };
+        this.addItem = this.addItem.bind(this);
+        var i = 0;
+    }
+
+    addItem(e) {
+        this.props.add_item(e);
     }
 
     onPress = (name) => {
@@ -50,35 +43,64 @@ export default class ExerciseSelectionScreen extends Component {
 
     onCancel = () => {
         this.setState({ _name: 'none' });
-        this.setState({ reps: 0, sets: 0 });
+        this.setState({ sets: 0, reps: 0 });
         this.setState({ modalVisible: false });
     }
 
     onSubmit = (name, reps, sets) => {
+        this.i++;
         this.setState({ modalVisible: false });
-        this.props.navigation.navigate('Checkout',
-            {
-                exercise: name,
-                reps: reps,
-                sets: sets,
-                statechange: true
+        this.addItem({
+            name: name,
+            sets: sets,
+            reps: reps,
+            key: this.i.toString()
+        });
+    }
+
+    onSearch = (text) => {
+        let searched_text = text;
+        let workouts = this.props.workouts;
+        let searched_text_lowercase = searched_text.toLowerCase();
+
+        var new_data = [];
+        for (var i = 0; i < workouts.length; i++) {
+            var name = workouts[i].name.toLowerCase();
+            if (name.indexOf(searched_text_lowercase) !== -1) {
+                new_data.push(workouts[i]);
+            }
+        }
+
+        if (new_data.length == 0) {
+            this.setState(previousState => {
+                return { data: new_data }
             });
+        }
+        else if (this.state.searched_text != '') {
+            this.setState(previousState => {
+                return { data: new_data }
+            });
+        } else {
+            this.setState(previousState => {
+                return { data: this.props.workouts }
+            });
+        }
     }
 
     renderModal = () => (
         <View style={styles.modalContent}>
             <View style={styles.button_container}>
-                {/*enter reps*/}
-                <TextInput
-                    style={styles.input_text}
-                    placeholder='enter reps'
-                    onChangeText={(text) => { this.setState({ reps: text }) }}
-                />
                 {/*enter sets*/}
                 <TextInput
                     style={styles.input_text}
                     placeholder='enter sets'
                     onChangeText={(text) => { this.setState({ sets: text }) }}
+                />
+                {/*enter reps*/}
+                <TextInput
+                    style={styles.input_text}
+                    placeholder='enter reps'
+                    onChangeText={(text) => { this.setState({ reps: text }) }}
                 />
             </View>
             <View style={styles.button_container}>
@@ -97,35 +119,6 @@ export default class ExerciseSelectionScreen extends Component {
             </View>
         </View>
     );
-
-    onSearch = (text) => {
-        let searched_text = text;
-        let workouts = this.state.all_data;
-        let searched_text_lowercase = searched_text.toLowerCase();
-
-        var new_data = [];
-        for (var i = 0; i < workouts.length; i++) {
-            var name = workouts[i].name.toLowerCase();
-            if (name.indexOf(searched_text_lowercase) !== -1) {
-                new_data.push(workouts[i]);
-            }
-        }
-
-        if (new_data.length == 0) {
-            this.setState(previousState => {
-                return { data: this.state.null_data }
-            });
-        }
-        else if (this.state.searched_text != '') {
-            this.setState(previousState => {
-                return { data: new_data }
-            });
-        } else {
-            this.setState(previousState => {
-                return { data: this.state.all_data }
-            });
-        }
-    }
 
     render() {
         return (
@@ -147,7 +140,7 @@ export default class ExerciseSelectionScreen extends Component {
                         />
                     </View>
                 </View>
-                <FlatList 
+                <FlatList
                     data={this.state.data}
                     renderItem={({ item }) =>
                         <CustomListItem
@@ -161,7 +154,7 @@ export default class ExerciseSelectionScreen extends Component {
                         />
                     }
                 />
-                <Modal 
+                <Modal
                     animeationStyle="slide"
                     transparent={true}
                     visible={this.state.modalVisible}
