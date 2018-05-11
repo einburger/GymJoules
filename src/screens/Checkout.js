@@ -24,7 +24,6 @@ export default class CheckoutScreen extends Component {
     }
 
     beDone = () => {
-        // pass in prop function from App.js
         Alert.alert('you dun did the exercises and now ya got cancer');
     }
 
@@ -39,7 +38,8 @@ export default class CheckoutScreen extends Component {
                             item_name={item.name}
                             sets={item.sets}
                             reps={item.reps}
-                            font_style={styles.exercise_label_text}
+                            weight={item.weight}
+                            font_style={styles.checkout_label_text}
                             checkout_list_item={styles.checkout_list_item}
                         />
                     }

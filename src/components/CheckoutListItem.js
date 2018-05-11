@@ -14,6 +14,9 @@ const checkoutlistitem = (props) => {
                 <View style={{ backgroundColor: 'blue' }}>
                     <Text style={props.font_style}> {props.reps} </Text>
                 </View>
+                <View style={{ backgroundColor: 'green' }}>
+                    <Text style={props.font_style}> {props.weight} </Text>
+                </View>
             </View>
         </View>
     )

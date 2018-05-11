@@ -27,6 +27,7 @@ export default class ExerciseSelectionScreen extends Component {
             _name: 'pussy',
             reps: 0,
             sets: 0,
+            weight: 0.0,
         };
         this.addItem = this.addItem.bind(this);
         var i = 0;
@@ -93,8 +94,8 @@ export default class ExerciseSelectionScreen extends Component {
                 {/*enter sets*/}
                 <TextInput
                     style={styles.input_text}
-                    placeholder='enter sets'
-                    onChangeText={(text) => { this.setState({ sets: text }) }}
+                    placeholder='enter weight'
+                    onChangeText={(text) => { this.setState({ weight: text }) }}
                 />
                 {/*enter reps*/}
                 <TextInput
@@ -105,7 +106,7 @@ export default class ExerciseSelectionScreen extends Component {
             </View>
             <View style={styles.button_container}>
                 <CustomButton
-                    onPress={() => this.onSubmit(this.state._name, this.state.reps, this.state.sets)}
+                    onPress={() => this.onSubmit(this.state._name, this.state.reps, this.state.sets, this.state.weight)}
                     button_style={styles.button}
                     text_style={styles.button_text}
                     text='Submit'
